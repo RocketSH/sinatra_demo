@@ -1,13 +1,13 @@
-<h1>Balance amount:
-<form type="text" name="account"> 
-</h1>
+<h3>歡迎光臨</h3>
+<h3>您目前的帳戶餘額:
+<%= session[:account] %></h3>
 
-<form action="atm"" method="post">
-  <select name="option"> 
-    <option value="">請選擇功能項目</option>
-    <option value="plus">+ 存款</option>
-    <option value="minus">- 提款</option>
+<form action="/atm"" method="POST">
+  <select name="transaction"> 
+    <p>交易項目</p>
+    <option value="plus">存款</option>
+    <option value="minus">提款</option>
   </select> 
   <input type="text" name="amount" placeholder="請輸入金額">
-  <input type="submit" value="確認">
+  <input type="submit" value="確認交易"> 
   </form>

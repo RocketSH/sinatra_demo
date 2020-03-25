@@ -2,22 +2,20 @@ require 'sinatra'
 require "sinatra/reloader" if development?
 
 enable :sessions
-account = 0
 
 get '/atm' do
   erb :atm
 end
 
 post '/atm' do
+  account = session[:account] || 0
   amount = params[:amount].to_i
-  if params[:option] == "plus"
-    account = account + amount
-  elsif params[:option] == "minus" && amount >= 0 && account > amount
-    account -= amount
-  else
-    account = account
-  end
 
+  if params[:transaction] == "plus" && amount >= 0
+    account += amount
+  elsif params[:transaction] == "minus" && amount >= 0 && account > amount
+    account -= amount
+  end
   session[:account] = account
   redirect "/atm"
 end
