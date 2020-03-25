@@ -4,7 +4,7 @@ require "sinatra/reloader" if development?
 enable :sessions
 
 get '/atm' do
-  erb :atm
+  erb :atm1
 end
 
 post '/atm' do
